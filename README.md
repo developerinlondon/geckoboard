@@ -1,18 +1,16 @@
 # Sinatra Geckoboard
 
-A little [Sinatra](http://www.sinatrarb.com/) extension to expose data nicely to [Geckoboard](http://www.geckoboard.com/).
-
-We are using it in production.
+A little gem to expose data nicely to [Geckoboard](http://www.geckoboard.com/).
 
 ## Install
 
 Install with Rubygems:
 
-    gem install sinatra-geckoboard
+    gem install geckoboard
 
 If you use bundler, add it to your Gemfile:
 
-    gem "sinatra-geckoboard", "~>0.1.0"
+    gem 'geckoboard',
 
 ## Usage
 
@@ -88,7 +86,7 @@ number(number1[, number2])
 
 MIT License
 
-Copyright (C) 2011 by af83
+Copyright (C) 2014 by Nayeem Syed
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

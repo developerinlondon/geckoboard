@@ -1,0 +1,71 @@
+require 'geckoboard/version'
+require 'digest/md5'
+require 'json'
+
+class Geckoboard
+  def self.gecko_item(text, value, other_attributes = {})
+    { text: text, value: value }.
+      merge(other_attributes).
+      reject { |_, attribute_value| attribute_value.nil? }
+  end
+
+  def self.treadline(text, value, treadline, gecko_item_attributes = {})
+    widget item: [
+      gecko_item(text, value, gecko_item_attributes),
+      treadline
+    ]
+  end
+
+  def self.comparison(first, second)
+    widget item: [
+      gecko_item('', first),
+      gecko_item('', second)
+    ]
+  end
+
+  def self.list_item text, description, other_attributes = {}
+    widget other_attributes.merge({title: { text: text }, description: description})
+  end
+
+  # Render a RAG widget
+  #
+  # @param [Hash] red
+  # @param [Hash] amber
+  # @param [Hash] green
+  # @return [String] the rag widget as json string
+  def self.rag(red, amber, green)
+    widget item: [red, amber, green]
+  end
+
+  def self.pie pie_items
+    widget item: pie_items
+  end
+
+  def self.pie_item(value, label, color = nil)
+    pie_item = {
+      value: value,
+      label: label
+    }
+    if color
+      pie_item[:color] = color
+    end
+
+    pie_item
+  end
+
+  # Render a geck-o-meter widget
+  #
+  # @param [String] values
+  # @param [Hash] max Hash with text and value keys
+  # @param [Hash] min Hash with text and value keys
+  # @return [String] the geck-o-meter chart as json string
+  def self.geck_o_meter(value, max, min)
+    widget item: value, max: max, min: min
+  end
+
+  protected
+
+  def self.widget(widget)
+    widget.to_json
+  end
+end
