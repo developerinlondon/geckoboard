@@ -1,4 +1,4 @@
-# Sinatra Geckoboard
+# Geckoboard
 
 A little gem to expose data nicely to [Geckoboard](http://www.geckoboard.com/).
 
@@ -10,76 +10,72 @@ Install with Rubygems:
 
 If you use bundler, add it to your Gemfile:
 
-    gem 'geckoboard',
+    gem 'geckoboard'
 
 ## Usage
 
+### List item
+
 ```ruby
-require 'sinatra/base'
-require 'sinatra/geckoboard'
-
-class App < Sinatra::Base
-  register Sinatra::Geckoboard
-
-  get '/pie_graph' do
-    pie_chart [ { "label" => "Chuck Norris",
-                  "value" => 3,
-                  "colour" => "#ff9900" },
-                { "label" => "Bruce Lee",
-                  "value" => 0,
-                  "colour" => "#ef9900" }
-              ]
-  end
-
-  get '/line_chart' do
-    line_chart [1, 3], ["value1", "value2"], ["top1", "top2"], "#ff9900"
-  end
-end
+Geckoboard.list_item('text', 'description')
 ```
 
-### Pie Chart
-
-Render a pie chart widget. You should pass an array of `Hash`. If the key `colour` is ommited, a colour will be generated with the `label` key.
+### Trendline
 
 ```ruby
-pie_chart(values)
+Geckoboard.trendline(
+  'Text',
+  10, # value
+  [1,2,4,7,10] # trendline values
+)
 ```
 
-### Line Chart
-
-Render a line_chart widget.
+### Comparison
 
 ```ruby
-line_chart(values, axisx, axisy, colour)
+Geckoboard.comparison(10, 20) # first and second value to compare
 ```
 
-### Geck-O-Meter
-
-Render a Geck-O-Meter widget.
+### Rag
 
 ```ruby
-geck_o_meter(number, max, min)
+Geckoboard.pie(
+  Geckoboard.gecko_item('Red', 10),
+  Geckoboard.gecko_item('Amber', 20),
+  Geckoboard.gecko_item('Green', 30),
+)
 ```
 
-### RAG
-
-Render a RAG widget.
+### Geck-o-Meter
 
 ```ruby
-red   = {value: 4, text: 'Plop'}
-amber = {value: 4, text: 'Plop'}
-green = {value: 4, text: 'Plop'}
-rag(red, amber, green)
+Geckoboard.geck_o_meter(
+  80,
+  Geckoboard.gecko_item('Max value', 100),
+  Geckoboard.gecko_item('Min value', 0)
+)
 ```
 
-### Number + optional secondary stat
-
-Render a Number widget.
+### Pie
 
 ```ruby
-number1 = {value: 4, text: 'Plop'}
-number2 = {value: 5, text: 'Plop'}
-number(number1[, number2])
+Geckoboard.pie([
+  Geckoboard.pie_item(70, '70 percents label', 'FFFF10AA'),
+  Geckoboard.pie_item(30, '30 percents label', 'FFAA0AAA')
+])
+```
+
+### Helper Methods
+
+#### Gecko Item
+```ruby
+  other_attributes = { label: 'label', type: 0 }
+  Geckoboard.gecko_item('text', 'value', other_attributes) # other_attributes are optional
+```
+
+#### Pie Item
+```ruby
+  Geckoboard.pie_item('value', 'label', 'FFFF10') # color is optional
 ```
 
 ## License
