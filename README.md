@@ -39,7 +39,7 @@ Geckoboard.comparison(10, 20) # first and second value to compare
 ### Rag
 
 ```ruby
-Geckoboard.pie(
+Geckoboard.rag(
   Geckoboard.gecko_item('Red', 10),
   Geckoboard.gecko_item('Amber', 20),
   Geckoboard.gecko_item('Green', 30),
