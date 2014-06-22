@@ -128,6 +128,26 @@ describe Geckoboard do
     end
   end
 
+  describe '.pie_item' do
+    context 'with argument' do
+      let(:value) { 10 }
+      let(:label) { 'label' }
+      let(:color) { '#ffffff' }
+      let(:pie_item) { Geckoboard.pie_item(value, label, color) }
+
+      it 'should have value' do
+        expect(pie_item[:value]).to eq value
+      end
+
+      it 'should have label' do
+        expect(pie_item[:label]).to eq label
+      end
+
+      it 'should have color' do
+        expect(pie_item[:color]).to eq color
+      end
+    end
+  end
 
   describe '.geck_o_meter' do
     context 'with all arguments' do

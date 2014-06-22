@@ -36,15 +36,7 @@ class Geckoboard
   end
 
   def self.pie_item(value, label, color = nil)
-    pie_item = {
-      value: value,
-      label: label
-    }
-    if color
-      pie_item[:color] = color
-    end
-
-    pie_item
+    gecko_item(nil, value, { label: label, color: color })
   end
 
   def self.geck_o_meter(value, max, min)
