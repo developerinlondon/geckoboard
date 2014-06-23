@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Geckoboard::VERSION
   spec.authors       = ["Nayeem Syed"]
   spec.email         = ["developerinlondon@gmail.com"]
-  spec.summary       = %q{Add update_or_create and delete_then_create to ActiveRecord models}
+  spec.summary       = %q{A little gem to expose data nicely to Geckoboard}
   spec.homepage      = "https://github.com/developerinlondon/geckoboard"
   spec.license       = "MIT"
 
