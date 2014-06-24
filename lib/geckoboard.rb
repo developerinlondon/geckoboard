@@ -24,7 +24,7 @@ class Geckoboard
   end
 
   def self.list_item text, description, other_attributes = {}
-    widget other_attributes.merge({title: { text: text }, description: description})
+    other_attributes.merge({title: { text: text }, description: description})
   end
 
   def self.rag(red, amber, green)
