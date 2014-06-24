@@ -90,14 +90,13 @@ describe Geckoboard do
       let(:text) { 'text' }
       let(:description) { 'description' }
       let(:list_item) { Geckoboard.list_item(text, description) }
-      let(:parsed_list_item) { JSON.parse(list_item) }
 
       it 'should have text' do
-        expect(parsed_list_item['title']['text']).to eq text
+        expect(list_item[:title][:text]).to eq text
       end
 
       it 'should have description' do
-        expect(parsed_list_item['description']).to eq description
+        expect(list_item[:description]).to eq description
       end
     end
   end
