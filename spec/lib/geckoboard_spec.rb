@@ -68,6 +68,23 @@ describe Geckoboard do
     end
   end
 
+  describe '.number' do
+    context 'with arguments' do
+      let(:text) { 'text' }
+      let(:value) { 2 }
+      let(:number) { Geckoboard.number(text, value) }
+      let(:parsed_number) { JSON.parse(number) }
+
+      it 'should have text' do
+        expect(parsed_number['item'].first['text']).to eq text
+      end
+
+      it 'should have value' do
+        expect(parsed_number['item'].first['value']).to eq value
+      end
+    end
+  end
+
   describe '.comparison' do
     context 'with arguments' do
       let(:first) { 1 }
