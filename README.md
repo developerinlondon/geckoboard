@@ -14,6 +14,11 @@ If you use bundler, add it to your Gemfile:
 
 ## Usage
 
+### [Number](https://developer.geckoboard.com/#number-and-secondary-stat)
+```ruby
+Geckoboard.number('text', 2) # text and value
+```
+
 ### List item
 
 ```ruby
