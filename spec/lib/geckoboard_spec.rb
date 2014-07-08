@@ -186,4 +186,32 @@ describe Geckoboard do
       end
     end
   end
+
+  describe '.funnel' do
+    context 'with argument' do
+      let(:funnel_items) { [1, 2, 3] }
+      let(:funnel) { Geckoboard.funnel(funnel_items) }
+      let(:parsed_funnel) { JSON.parse(funnel) }
+
+      it 'should have funnel item' do
+        expect(parsed_funnel['item']).to eq funnel_items
+      end
+    end
+  end
+
+  describe '.funnel_item' do
+    context 'with argument' do
+      let(:value) { 10 }
+      let(:label) { 'label' }
+      let(:funnel_item) { Geckoboard.funnel_item(label, value) }
+
+      it 'should have value' do
+        expect(funnel_item[:value]).to eq value
+      end
+
+      it 'should have label' do
+        expect(funnel_item[:label]).to eq label
+      end
+    end
+  end
 end

@@ -49,6 +49,14 @@ class Geckoboard
     widget item: value, max: max, min: min
   end
 
+  def self.funnel(funnel_items)
+    widget item: funnel_items
+  end
+
+  def self.funnel_item(label, value)
+    gecko_item(nil, value, { label: label })
+  end
+
   protected
 
   def self.widget(widget)
