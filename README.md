@@ -76,7 +76,7 @@ Geckoboard.pie([
 Geckoboard.funnel([
   Geckoboard.funnel_item('Top funnel part', 100),
   Geckoboard.funnel_item('Bottom funnel part', 50)
-])
+], percentage: 'hide')
 ```
 
 ### Helper Methods

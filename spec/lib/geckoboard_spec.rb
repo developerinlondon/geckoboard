@@ -190,11 +190,15 @@ describe Geckoboard do
   describe '.funnel' do
     context 'with argument' do
       let(:funnel_items) { [1, 2, 3] }
-      let(:funnel) { Geckoboard.funnel(funnel_items) }
+      let(:percentage) { 'hide' }
+      let(:funnel) { Geckoboard.funnel(funnel_items, percentage: percentage) }
       let(:parsed_funnel) { JSON.parse(funnel) }
 
       it 'should have funnel item' do
         expect(parsed_funnel['item']).to eq funnel_items
+      end
+      it 'should have funnel percentage option' do
+        expect(parsed_funnel['percentage']).to eq percentage
       end
     end
   end

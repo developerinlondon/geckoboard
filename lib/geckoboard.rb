@@ -49,8 +49,8 @@ class Geckoboard
     widget item: value, max: max, min: min
   end
 
-  def self.funnel(funnel_items)
-    widget item: funnel_items
+  def self.funnel(funnel_items, other_attributes = {})
+    widget({item: funnel_items}.merge(other_attributes))
   end
 
   def self.funnel_item(label, value)
