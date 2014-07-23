@@ -19,6 +19,11 @@ If you use bundler, add it to your Gemfile:
 Geckoboard.number('text', 2) # text and value
 ```
 
+### Text
+```ruby
+Geckoboard.text('text value', type: 2) # text value and optional attributes
+```
+
 ### List item
 
 ```ruby

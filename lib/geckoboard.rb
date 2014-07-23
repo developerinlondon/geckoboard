@@ -22,6 +22,12 @@ class Geckoboard
     ]
   end
 
+  def self.text(text_value, other_attributes = {})
+    widget item: [
+      gecko_item(text_value, nil, other_attributes)
+    ]
+  end
+
   def self.comparison(first, second)
     widget item: [
       gecko_item('', first),

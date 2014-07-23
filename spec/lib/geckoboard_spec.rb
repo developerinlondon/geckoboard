@@ -85,6 +85,23 @@ describe Geckoboard do
     end
   end
 
+  describe '.text' do
+    context 'with arguments' do
+      let(:text_value) { 'text' }
+      let(:type) { 2 }
+      let(:text) { Geckoboard.text(text_value, type: type) }
+      let(:parsed_text) { JSON.parse(text) }
+
+      it 'should have text value' do
+        expect(parsed_text['item'].first['text']).to eq text_value
+      end
+
+      it 'should have type' do
+        expect(parsed_text['item'].first['type']).to eq type
+      end
+    end
+  end
+
   describe '.comparison' do
     context 'with arguments' do
       let(:first) { 1 }
